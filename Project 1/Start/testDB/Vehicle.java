@@ -1,12 +1,12 @@
 
 public class Vehicle {
-	public String[] VehicleMake = { "Ford", "Chevy", "Toyota", "Nissan", "Hyundai" };
-	public String[] VehicleSize = { "compact", "intermediate", "fullSized" };
+	public String VehicleMake;// = { "Ford", "Chevy", "Toyota", "Nissan", "Hyundai" };
+	public String VehicleSize;// = { "compact", "intermediate", "fullSized" };
 	public double VehicleWeight;
 	public double VehicleEngineSize;
 	public boolean isVehicleImport;
 	
-	/*public Vehicle(String[] VehicleMake, String[] VehicleSize, double VehicleWeight, double VehicleEngineSize, boolean isVehicleImport ) {
+	/*public Vehicle(String VehicleMake, String VehicleSize, double VehicleWeight, double VehicleEngineSize, boolean isVehicleImport ) {
 		this.VehicleMake = VehicleMake;
 		this.VehicleSize = VehicleSize;
 		this.VehicleWeight = VehicleWeight;
@@ -14,12 +14,18 @@ public class Vehicle {
 		this.isVehicleImport = isVehicleImport;
 	}*/
 	
-	public String[] getVehicleMake() 
+	/*public Vehicle(String[] VehicleMake, String[] size, double weight, double enginesize, boolean import) {
+		// TODO Auto-generated constructor stub
+		this.VehicleMake = VehicleMake;
+		
+	}*/
+
+	public String getVehicleMake() 
 	{
 		return VehicleMake;
 	}
 	
-	public String[] getVehicleSize()
+	public String getVehicleSize()
 	{
 		return VehicleSize;
 	}
@@ -39,12 +45,12 @@ public class Vehicle {
 		return isVehicleImport;
 	}
 	
-	public void setVehicleMake(String[] newVehicleMake)
+	public void setVehicleMake(String newVehicleMake)
 	{
 		VehicleMake = newVehicleMake;
 	}
 	
-	public void setVehicleSize(String[] newVehicleSize)
+	public void setVehicleSize(String newVehicleSize)
 	{
 		VehicleSize = newVehicleSize;
 	}
@@ -67,7 +73,7 @@ public class Vehicle {
 			newVehicleEngineSize = 0;
 		} else {
 		
-			VehicleWeight = newVehicleEngineSize;
+			VehicleEngineSize = newVehicleEngineSize;
 		}
 	}
 	
