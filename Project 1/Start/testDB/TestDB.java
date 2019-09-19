@@ -4,9 +4,6 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 
-//Scanner
-import java.util.Scanner;//
-
 /**
    Tests a database installation by creating and querying
    a sample table. Call this program as
@@ -15,30 +12,40 @@ import java.util.Scanner;//
 public class TestDB 
 {	
 	//private static Vehicle Vehicle = new Vehicle("Ford", "compact", 5, 5, true);
+	
+/*	//for(int i; i<2; i++) {
 	private static Vehicle Vehicle = new Vehicle();
-
+	//}
 	private static void PrintVehicle() {
 		System.out.println("Make: " + Vehicle.VehicleMake);
 		System.out.println("Size: " + Vehicle.VehicleSize);
 		System.out.println("Weight: " + Vehicle.VehicleWeight);
 		System.out.println("Engine Size: " + Vehicle.VehicleEngineSize);
 		System.out.println("Imported?: " + Vehicle.isVehicleImport + "\n");
-	}
+	}*/
 	
 	public static void main(String[] args) throws Exception
    {   
-	   Scanner scan = new Scanner(System.in);
-	   String input1;
-	   String input2;
-	   double input3;
-	   double input4;
-	   boolean input5;
 	   
-	   input1 = scan.next();
-	   input2 = scan.next();
-	   input3 = scan.nextDouble();
-	   input4 = scan.nextDouble();
-	   input5 = scan.nextBoolean();
+	   for(int i = 0; i<10; i++) {
+		Vehicle Vehicle = new Vehicle();
+	   
+	   int randmake = (int) (Math.random()*5);
+	   String input1 = new String[] { "Ford", "Chevy", "Toyota", "Nissan", "Hyundai" }[randmake];
+	   int randsize = (int) (Math.random()*3);
+	   String input2 = "0";// = new String[] { "compact", "intermediate", "fullSized" }[randsize];
+	   double input3 = (Math.random() * (+4000 - +1500)) + +1500;
+	   double input4 = (Math.random() * ((1000 - 100) + 100)) + 100;
+	   boolean input5 = true;
+
+	   if(input3 < 2001) {input2 ="compact";}
+	   if(input3 > 2001 && input3 < 2500) {input2 ="intermediate";}
+	   if(input3 > 2501) {input2 ="fullSized";}
+	   if(input1 == "Ford" || input1 == "Chevy") {
+		   input5 = false;
+	   }else {
+		   input5 = true;
+	   }
 	   
 	   Vehicle.setVehicleMake(input1);
 	   Vehicle.setVehicleSize(input2);
@@ -46,9 +53,16 @@ public class TestDB
 	   Vehicle.setVehicleEngineSize(input4);
 	   Vehicle.setIsVehicleImport(input5);
 	   
+	   	System.out.println("Car " + (i+1));
+	    System.out.println("Make: " + Vehicle.VehicleMake);
+		System.out.println("Size: " + Vehicle.VehicleSize);
+		System.out.println("Weight: " + Vehicle.VehicleWeight);
+		System.out.println("Engine Size: " + Vehicle.VehicleEngineSize);
+		System.out.println("Imported?: " + Vehicle.isVehicleImport + "\n");
+	   }
 		
-		PrintVehicle();
-	   Vehicle.setIsVehicleImport(Vehicle.isVehicleImport = false);
+		//PrintVehicle();
+	   Vehicle.setIsVehicleImport(Vehicle.isVehicleImport);
 	   
 		if (args.length == 0)
       {   

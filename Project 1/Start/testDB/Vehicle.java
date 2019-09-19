@@ -1,10 +1,10 @@
 
 public class Vehicle {
-	public String VehicleMake;// = { "Ford", "Chevy", "Toyota", "Nissan", "Hyundai" };
-	public String VehicleSize;// = { "compact", "intermediate", "fullSized" };
-	public double VehicleWeight;
-	public double VehicleEngineSize;
-	public boolean isVehicleImport;
+	public static String VehicleMake;// = { "Ford", "Chevy", "Toyota", "Nissan", "Hyundai" };
+	public static String VehicleSize;// = { "compact", "intermediate", "fullSized" };
+	public static double VehicleWeight;
+	public static double VehicleEngineSize;
+	public static boolean isVehicleImport;
 	
 	/*public Vehicle(String VehicleMake, String VehicleSize, double VehicleWeight, double VehicleEngineSize, boolean isVehicleImport ) {
 		this.VehicleMake = VehicleMake;
@@ -45,17 +45,17 @@ public class Vehicle {
 		return isVehicleImport;
 	}
 	
-	public void setVehicleMake(String newVehicleMake)
+	public static void setVehicleMake(String newVehicleMake)
 	{
 		VehicleMake = newVehicleMake;
 	}
 	
-	public void setVehicleSize(String newVehicleSize)
+	public static void setVehicleSize(String newVehicleSize)
 	{
 		VehicleSize = newVehicleSize;
 	}
 	
-	public void setVehicleWeight(double newVehicleWeight)
+	public static void setVehicleWeight(double newVehicleWeight)
 	{
 		if (newVehicleWeight < 0)
 		{
@@ -66,7 +66,7 @@ public class Vehicle {
 		}
 	}
 	
-	public void setVehicleEngineSize(double newVehicleEngineSize)
+	public static void setVehicleEngineSize(double newVehicleEngineSize)
 	{
 		if (newVehicleEngineSize < 0)
 		{
@@ -77,7 +77,7 @@ public class Vehicle {
 		}
 	}
 	
-	public void setIsVehicleImport(boolean newIsVehicleImport)
+	public static void setIsVehicleImport(boolean newIsVehicleImport)
 	{
 		isVehicleImport = newIsVehicleImport;
 	}
