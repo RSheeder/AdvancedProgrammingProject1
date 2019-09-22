@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -27,42 +28,65 @@ public class TestDB
 	
 	public static void main(String[] args) throws Exception
    {   
-	  DecimalFormat df = new DecimalFormat("####.##");
+	   DecimalFormat df = new DecimalFormat("####.##");
+	   FileWriter fileWriter = new FileWriter("Vehicles.dat");
 		
 	   for(int i = 1; i<11; i++) {
 		Vehicle Vehicle = new Vehicle();
 	   
 	   int randmake = (int) (Math.random()*5);
-	   String input1 = new String[] { "Ford", "Chevy", "Toyota", "Nissan", "Hyundai" }[randmake];
+	   String make = new String[] { "Ford", "Chevy", "Toyota", "Nissan", "Hyundai" }[randmake];
 	   int randsize = (int) (Math.random()*3);
-	   String input2 = "0";// = new String[] { "compact", "intermediate", "fullSized" }[randsize];
-	   double input3 = (Math.random() * (+4000 - +1500)) + +1500;
-	   double input4 = (Math.random() * ((1000 - 100) + 100)) + 100;
-	   boolean input5 = true;
+	   String size = "0";// = new String[] { "compact", "intermediate", "fullSized" }[randsize];
+	   double weight = (Math.random() * (+4000 - +1500)) + +1500;
+	   double enginesize = (Math.random() * ((1000 - 100) + 100)) + 100;
+	   boolean imported = true;
 
-	   if(input3 < 2001) {input2 ="compact";}
-	   if(input3 > 2001 && input3 < 2500) {input2 ="intermediate";}
-	   if(input3 > 2501) {input2 ="fullSized";}
-	   if(input1 == "Ford" || input1 == "Chevy") {
-		   input5 = false;
+	   if(weight < 2001) {size ="compact";}
+	   if(weight > 2001 && weight < 2500) {size ="intermediate";}
+	   if(weight > 2501) {size ="fullSized";}
+	   if(make == "Ford" || make == "Chevy") {
+		   imported = false;
 	   } else {
-		   input5 = true;
+		   imported = true;
 	   }
 	   
-	   Vehicle.setVehicleMake(input1);
-	   Vehicle.setVehicleSize(input2);
-	   Vehicle.setVehicleWeight(input3);
-	   Vehicle.setVehicleEngineSize(input4);
-	   Vehicle.setIsVehicleImport(input5);
+	   
+	   
+	   Vehicle.setVehicleMake(make);
+	   Vehicle.setVehicleSize(size);
+	   Vehicle.setVehicleWeight(weight);
+	   Vehicle.setVehicleEngineSize(enginesize);
+	   Vehicle.setIsVehicleImport(imported);
+	   
+	   
+	  // FileWriter fileWriter = new FileWriter("Vehicles.dat");
+	   //fileWriter.write("Make: " + Vehicle.VehicleMake);
+	   
+	   //fileWriter.close();
+	   
 	   
 	   	System.out.println("Car " + (i));
-	    System.out.println("Make: " + Vehicle.VehicleMake);
-		System.out.println("Size: " + Vehicle.VehicleSize);
-		System.out.println("Weight: " + df.format(Vehicle.VehicleWeight));
-		System.out.println("Engine Size: " + df.format(Vehicle.VehicleEngineSize));
-		System.out.println("Imported?: " + Vehicle.isVehicleImport + "\n");
-	   }
+	   	fileWriter.write("Car " + i +": " + "\n");
+	    
+	   	System.out.println("Make: " + Vehicle.VehicleMake);
+	    fileWriter.write("Make: " + make + "\n");
 		
+	    System.out.println("Size: " + Vehicle.VehicleSize);
+		fileWriter.write("Size: " + size + "\n");
+		
+		System.out.println("Weight: " + df.format(Vehicle.VehicleWeight));
+		fileWriter.write("Weight: " + df.format(weight) + "\n");
+		
+		System.out.println("Engine Size: " + df.format(Vehicle.VehicleEngineSize));
+		fileWriter.write("Engine Size: " + df.format(enginesize) + "\n");
+		
+		System.out.println("Imported?: " + Vehicle.isVehicleImport + "\n");
+		fileWriter.write("Imported?: " + imported + "\n\n");
+		
+		//fileWriter.close();
+	   }
+		fileWriter.close();
 		//PrintVehicle();
 	   Vehicle.setIsVehicleImport(Vehicle.isVehicleImport);
 	   
@@ -79,9 +103,9 @@ public class TestDB
 		   System.out.println("args[0] = " + args[0]);
          SimpleDataSource.init(args[0]);
 		}
-      
+
       Connection conn = SimpleDataSource.getConnection();
-      Statement stat = conn.createStatement();     
+      Statement stat = conn.createStatement();  
  	   try {  
 		  stat.execute("DROP TABLE Test2"); 
       }

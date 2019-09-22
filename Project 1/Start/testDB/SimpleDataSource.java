@@ -33,7 +33,7 @@ public class SimpleDataSource
       password = props.getProperty("jdbc.password");
       if (password == null) password = "";
       if (driver != null)
-         Class.forName(driver);
+        Class.forName(driver);
    }
 
    /**
@@ -42,7 +42,10 @@ public class SimpleDataSource
    */
    public static Connection getConnection() throws SQLException
    {
-      return DriverManager.getConnection(url, username, password);
+	   //System.out.print(new File("").getAbsolutePath());   
+	   System.out.println("SimpleDataSource.java info URL: " + url + " USERNAME: " + username + " PASSWORD: " + password);
+	   return DriverManager.getConnection(url, username, password);
+
    }
 }
 
