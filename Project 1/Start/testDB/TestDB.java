@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 
 /**
    Tests a database installation by creating and querying
@@ -26,8 +27,9 @@ public class TestDB
 	
 	public static void main(String[] args) throws Exception
    {   
-	   
-	   for(int i = 0; i<10; i++) {
+	  DecimalFormat df = new DecimalFormat("####.##");
+		
+	   for(int i = 1; i<11; i++) {
 		Vehicle Vehicle = new Vehicle();
 	   
 	   int randmake = (int) (Math.random()*5);
@@ -43,7 +45,7 @@ public class TestDB
 	   if(input3 > 2501) {input2 ="fullSized";}
 	   if(input1 == "Ford" || input1 == "Chevy") {
 		   input5 = false;
-	   }else {
+	   } else {
 		   input5 = true;
 	   }
 	   
@@ -53,11 +55,11 @@ public class TestDB
 	   Vehicle.setVehicleEngineSize(input4);
 	   Vehicle.setIsVehicleImport(input5);
 	   
-	   	System.out.println("Car " + (i+1));
+	   	System.out.println("Car " + (i));
 	    System.out.println("Make: " + Vehicle.VehicleMake);
 		System.out.println("Size: " + Vehicle.VehicleSize);
-		System.out.println("Weight: " + Vehicle.VehicleWeight);
-		System.out.println("Engine Size: " + Vehicle.VehicleEngineSize);
+		System.out.println("Weight: " + df.format(Vehicle.VehicleWeight));
+		System.out.println("Engine Size: " + df.format(Vehicle.VehicleEngineSize));
 		System.out.println("Imported?: " + Vehicle.isVehicleImport + "\n");
 	   }
 		
