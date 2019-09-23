@@ -96,7 +96,7 @@ public class TestDB
                "Usage: java -classpath driver_class_path" 
                + File.pathSeparator 
                + ". TestDB database.properties");
-         return;
+         //return;
       }
       else 
 		{
