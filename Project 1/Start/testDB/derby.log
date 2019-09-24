@@ -1,6 +1,13 @@
 ----------------------------------------------------------------
-2019-09-14 21:05:41.158 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.2.2.0 - (485682): instance c013800d-016d-3198-80bf-0000073d8828
-on database directory D:\Uwf\Fall 2019\Advanced Programming\Project 1\Start\testDB\myDB  
-
+Tue Sep 24 10:43:23 CDT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-016d-63f1-0668-000007192540 
+on database directory D:\Uwf\Fall 2019\Advanced Programming\Project 1\Start\testDB\myDB with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+Loaded from file:/D:/Uwf/Fall%202019/Advanced%20Programming/Project%201/Start/testDB/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_221-b11
+user.dir=D:\Uwf\Fall 2019\Advanced Programming\Project 1\Start\testDB
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
