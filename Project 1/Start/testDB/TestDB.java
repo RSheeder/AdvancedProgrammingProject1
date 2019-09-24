@@ -112,9 +112,10 @@ public class TestDB
 	         stat.execute("INSERT INTO Test2 VALUES ('Harry',33)");*/
 	         //stat.execute("SELECT COLUMN_NAME FROM Test2");
 		   	 ResultSet result = stat.executeQuery("SELECT * FROM Test2");
+		   	 //ResultSet result2 = stat.executeQuery("SELECT * FROM Test2");
 				  
-				System.out.println("after inserts");
-				System.out.println("ID Make                Size                 Weight  Engine Imported");
+				System.out.println("SELECT * FROM Test2");
+				//System.out.println("ID Make                Size                 Weight  Engine Imported");
 				ResultSetMetaData rsm = result.getMetaData();
 				int cols = rsm.getColumnCount();
 				  while(result.next())
@@ -123,12 +124,28 @@ public class TestDB
 	               System.out.print(result.getString(i)+" ");
 	             System.out.println("");      
 				  }
-				try {  
+				  System.out.println("\n"+"SELECT * FROM Test2 WHERE Make ='Ford' OR Make='Chevy'");
+				  result = stat.executeQuery("SELECT * FROM Test2 WHERE Make ='Ford' OR Make='Chevy'");
+				  while(result.next())
+				  {
+				    for(int i = 1; i <= cols; i++)
+	               System.out.print(result.getString(i)+" ");
+	             System.out.println("");      
+				  }
+				  System.out.println("\n"+"SELECT * FROM Test2 WHERE Weight > 2500");
+				  result = stat.executeQuery("SELECT * FROM Test2 WHERE Weight > 2500");
+				  while(result.next())
+				  {
+				    for(int i = 1; i <= cols; i++)
+	               System.out.print(result.getString(i)+" ");
+	             System.out.println("");      
+				  }
+				try { 
 			     stat.execute("DROP TABLE Test2"); 
 	         }
 				catch (Exception e)
 				{ System.out.println("drop failed"); }    
-			} finally {
+	      } finally {
 		         conn.close();
 					System.out.println("dropped Table Test2, closed connection and ending program");  
 		    }
