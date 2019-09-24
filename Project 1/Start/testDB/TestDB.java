@@ -13,19 +13,6 @@ import java.text.DecimalFormat;
 */
 public class TestDB 
 {	
-	//private static Vehicle Vehicle = new Vehicle("Ford", "compact", 5, 5, true);
-	
-/*	//for(int i; i<2; i++) {
-	private static Vehicle Vehicle = new Vehicle();
-	//}
-	private static void PrintVehicle() {
-		System.out.println("Make: " + Vehicle.VehicleMake);
-		System.out.println("Size: " + Vehicle.VehicleSize);
-		System.out.println("Weight: " + Vehicle.VehicleWeight);
-		System.out.println("Engine Size: " + Vehicle.VehicleEngineSize);
-		System.out.println("Imported?: " + Vehicle.isVehicleImport + "\n");
-	}*/
-	
 	public static void main(String[] args) throws Exception
    {   
 	   DecimalFormat df = new DecimalFormat("####.##");
@@ -38,20 +25,18 @@ public class TestDB
 			  stat.execute("DROP TABLE Test2"); 
 	      }
 		   catch (Exception e)
-			{ System.out.println("drop failed"); }      
+			{ System.out.println(""); }      
 
 	   try
 	      {
 		   stat.execute("CREATE TABLE Test2 (CarID int, Make CHAR(20), Size CHAR(20), Weight FLOAT, EngineSize FLOAT, Import CHAR(5))");
-		   //stat.execute("CREATE TABLE Test2 (CarID int, Make CHAR(20), Size CHAR(20), Weight double(2,0), EngineSize double(2,0), Import boolean)");
 		   
 		   for(int i = 1; i<11; i++) {
-				Vehicle Vehicle = new Vehicle();
+			   Vehicle Vehicle = new Vehicle();
 			   
 			   int randmake = (int) (Math.random()*5);
 			   String make = new String[] { "Ford", "Chevy", "Toyota", "Nissan", "Hyundai" }[randmake];
-			   int randsize = (int) (Math.random()*3);
-			   String size = "0";// = new String[] { "compact", "intermediate", "fullSized" }[randsize];
+			   String size = "0";
 			   double weight = (Math.random() * (+4000 - +1500)) + +1500;
 			   double enginesize = (Math.random() * ((1000 - 100) + 100)) + 100;
 			   boolean imported = true;
@@ -65,27 +50,17 @@ public class TestDB
 				   imported = true;
 			   }
 			   
-			   
-			   
 			   Vehicle.setVehicleMake(make);
 			   Vehicle.setVehicleSize(size);
 			   Vehicle.setVehicleWeight(weight);
 			   Vehicle.setVehicleEngineSize(enginesize);
-			   Vehicle.setIsVehicleImport(imported);
-			   
-			   
-			  // FileWriter fileWriter = new FileWriter("Vehicles.dat");
-			   //fileWriter.write("Make: " + Vehicle.VehicleMake);
-			   
-			   //fileWriter.close();
-			   
+			   Vehicle.setIsVehicleImport(imported);   
 			   
 			   	System.out.println("Car " + (i));
 			   	fileWriter.write("Car " + i +": " + "\n");
 			    
 			   	System.out.println("Make: " + Vehicle.VehicleMake);
 			    fileWriter.write("Make: " + make + "\n");
-			    //stat.execute("INSERT INTO Test2 VALUES ('"+make+"',27)");
 				
 			    System.out.println("Size: " + Vehicle.VehicleSize);
 				fileWriter.write("Size: " + size + "\n");
@@ -100,22 +75,11 @@ public class TestDB
 				fileWriter.write("Imported?: " + imported + "\n\n");
 				
 				stat.execute("INSERT INTO Test2 VALUES ("+i+",'"+make+"','"+size+"',"+df.format(weight)+","+df.format(enginesize)+","+imported+")");
-				//stat.execute("INSERT INTO Test2 VALUES ('"+make+"',"+size+","+weight+","+enginesize+","+imported+")");
-				//fileWriter.close();
 			   }
 	   
-	         /*stat.execute("CREATE TABLE Test2 (Name CHAR(20),Age INTEGER)");
-	         stat.execute("INSERT INTO Test2 VALUES ('Romeo',27)");
-	         stat.execute("INSERT INTO Test2 VALUES ('Juliet',25)");
-	         stat.execute("INSERT INTO Test2 VALUES ('Tom',64)");
-	         stat.execute("INSERT INTO Test2 VALUES ('Dick',55)");
-	         stat.execute("INSERT INTO Test2 VALUES ('Harry',33)");*/
-	         //stat.execute("SELECT COLUMN_NAME FROM Test2");
 		   	 ResultSet result = stat.executeQuery("SELECT * FROM Test2");
-		   	 //ResultSet result2 = stat.executeQuery("SELECT * FROM Test2");
 				  
-				System.out.println("SELECT * FROM Test2");
-				//System.out.println("ID Make                Size                 Weight  Engine Imported");
+				System.out.println("Querying: SELECT * FROM Test2");
 				ResultSetMetaData rsm = result.getMetaData();
 				int cols = rsm.getColumnCount();
 				  while(result.next())
@@ -124,15 +88,15 @@ public class TestDB
 	               System.out.print(result.getString(i)+" ");
 	             System.out.println("");      
 				  }
-				  System.out.println("\n"+"SELECT * FROM Test2 WHERE Make ='Ford' OR Make='Chevy'");
-				  result = stat.executeQuery("SELECT * FROM Test2 WHERE Make ='Ford' OR Make='Chevy'");
+				  System.out.println("\n"+"Querying: SELECT * FROM Test2 WHERE Make = 'Ford' OR Make = 'Chevy'");
+				  result = stat.executeQuery("SELECT * FROM Test2 WHERE Make ='Ford' OR Make = 'Chevy'");
 				  while(result.next())
 				  {
 				    for(int i = 1; i <= cols; i++)
 	               System.out.print(result.getString(i)+" ");
 	             System.out.println("");      
 				  }
-				  System.out.println("\n"+"SELECT * FROM Test2 WHERE Weight > 2500");
+				  System.out.println("\n"+"Querying: SELECT * FROM Test2 WHERE Weight > 2500");
 				  result = stat.executeQuery("SELECT * FROM Test2 WHERE Weight > 2500");
 				  while(result.next())
 				  {
@@ -149,121 +113,7 @@ public class TestDB
 		         conn.close();
 					System.out.println("dropped Table Test2, closed connection and ending program");  
 		    }
-	   
-	   /*for(int i = 1; i<11; i++) {
-		Vehicle Vehicle = new Vehicle();
-	   
-	   int randmake = (int) (Math.random()*5);
-	   String make = new String[] { "Ford", "Chevy", "Toyota", "Nissan", "Hyundai" }[randmake];
-	   int randsize = (int) (Math.random()*3);
-	   String size = "0";// = new String[] { "compact", "intermediate", "fullSized" }[randsize];
-	   double weight = (Math.random() * (+4000 - +1500)) + +1500;
-	   double enginesize = (Math.random() * ((1000 - 100) + 100)) + 100;
-	   boolean imported = true;
-
-	   if(weight < 2001) {size ="compact";}
-	   if(weight > 2001 && weight < 2500) {size ="intermediate";}
-	   if(weight > 2501) {size ="fullSized";}
-	   if(make == "Ford" || make == "Chevy") {
-		   imported = false;
-	   } else {
-		   imported = true;
-	   }
-	   
-	   
-	   
-	   Vehicle.setVehicleMake(make);
-	   Vehicle.setVehicleSize(size);
-	   Vehicle.setVehicleWeight(weight);
-	   Vehicle.setVehicleEngineSize(enginesize);
-	   Vehicle.setIsVehicleImport(imported);
-	   
-	   
-	  // FileWriter fileWriter = new FileWriter("Vehicles.dat");
-	   //fileWriter.write("Make: " + Vehicle.VehicleMake);
-	   
-	   //fileWriter.close();
-	   
-	   
-	   	System.out.println("Car " + (i));
-	   	fileWriter.write("Car " + i +": " + "\n");
-	    
-	   	System.out.println("Make: " + Vehicle.VehicleMake);
-	    fileWriter.write("Make: " + make + "\n");
-		
-	    System.out.println("Size: " + Vehicle.VehicleSize);
-		fileWriter.write("Size: " + size + "\n");
-		
-		System.out.println("Weight: " + df.format(Vehicle.VehicleWeight));
-		fileWriter.write("Weight: " + df.format(weight) + "\n");
-		
-		System.out.println("Engine Size: " + df.format(Vehicle.VehicleEngineSize));
-		fileWriter.write("Engine Size: " + df.format(enginesize) + "\n");
-		
-		System.out.println("Imported?: " + Vehicle.isVehicleImport + "\n");
-		fileWriter.write("Imported?: " + imported + "\n\n");
-		
-		//fileWriter.close();
-	   }*/
 		fileWriter.close();
-		//PrintVehicle();
-	   Vehicle.setIsVehicleImport(Vehicle.isVehicleImport);
-	   
-	   //jdbc connectTest = new jdbc();
-	   
-	/*	if (args.length == 0)
-      {   
-         System.out.println(
-               "Usage: java -classpath driver_class_path" 
-               + File.pathSeparator 
-               + ". TestDB database.properties");
-         //return;
-      }
-      else 
-		{
-		   System.out.println("args[0] = " + args[0]);
-         SimpleDataSource.init(args[0]);
-		}*/
-	  /*
-	  SimpleDataSource.init("./database.properties");
-      Connection conn = SimpleDataSource.getConnection();
-      Statement stat = conn.createStatement();  
- 	   try {  
-		  stat.execute("DROP TABLE Test2"); 
-      }
-	   catch (Exception e)
-		{ System.out.println("drop failed"); }      
-
-      try
-      {
-   
-         stat.execute("CREATE TABLE Test2 (Name CHAR(20),Age INTEGER)");
-         stat.execute("INSERT INTO Test2 VALUES ('Romeo',27)");
-         stat.execute("INSERT INTO Test2 VALUES ('Juliet',25)");
-         stat.execute("INSERT INTO Test2 VALUES ('Tom',64)");
-         stat.execute("INSERT INTO Test2 VALUES ('Dick',55)");
-         stat.execute("INSERT INTO Test2 VALUES ('Harry',33)");
-         ResultSet result = stat.executeQuery("SELECT * FROM Test2");
-			  
-			System.out.println("after inserts");
-			ResultSetMetaData rsm = result.getMetaData();
-			int cols = rsm.getColumnCount();
-			  while(result.next())
-			  {
-			    for(int i = 1; i <= cols; i++)
-               System.out.print(result.getString(i)+" ");
-             System.out.println("");      
-			  }
-			try {  
-		     stat.execute("DROP TABLE Test2"); 
-         }
-			catch (Exception e)
-			{ System.out.println("drop failed"); }    
-		}
-      finally
-      {
-         conn.close();
-			System.out.println("dropped Table Test2, closed connection and ending program");  
-      }*/
+	    Vehicle.setIsVehicleImport(Vehicle.isVehicleImport);
    }
 }

@@ -5,20 +5,6 @@ public class Vehicle {
 	public static double VehicleWeight;
 	public static double VehicleEngineSize;
 	public static boolean isVehicleImport;
-	
-	/*public Vehicle(String VehicleMake, String VehicleSize, double VehicleWeight, double VehicleEngineSize, boolean isVehicleImport ) {
-		this.VehicleMake = VehicleMake;
-		this.VehicleSize = VehicleSize;
-		this.VehicleWeight = VehicleWeight;
-		this.VehicleEngineSize = VehicleEngineSize;
-		this.isVehicleImport = isVehicleImport;
-	}*/
-	
-	/*public Vehicle(String[] VehicleMake, String[] size, double weight, double enginesize, boolean import) {
-		// TODO Auto-generated constructor stub
-		this.VehicleMake = VehicleMake;
-		
-	}*/
 
 	public String getVehicleMake() 
 	{

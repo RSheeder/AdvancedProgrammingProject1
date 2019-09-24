@@ -42,8 +42,8 @@ public class SimpleDataSource
    */
    public static Connection getConnection() throws SQLException
    {
-	   //System.out.print(new File("").getAbsolutePath());   
-	   System.out.println("SimpleDataSource.java info URL: " + url + " USERNAME: " + username + " PASSWORD: " + password);
+
+	   System.out.println("Connecting to Database: URL: " + url + "Username: " + username);
 	   return DriverManager.getConnection(url, username, password);
 
    }
