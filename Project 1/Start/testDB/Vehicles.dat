@@ -1,70 +1,70 @@
 Car 1: 
-Make: Ford
-Size: compact
-Weight: 1701.22
-Engine Size: 1062.07
-Imported?: false
+Make: Hyundai
+Size: intermediate
+Weight: 2331.83
+Engine Size: 879.23
+Imported?: true
 
 Car 2: 
-Make: Toyota
-Size: intermediate
-Weight: 2226.55
-Engine Size: 898.85
-Imported?: true
-
-Car 3: 
 Make: Ford
-Size: intermediate
-Weight: 2137.75
-Engine Size: 417.65
+Size: compact
+Weight: 1618.14
+Engine Size: 1047.76
 Imported?: false
 
-Car 4: 
-Make: Toyota
-Size: fullSized
-Weight: 3055.19
-Engine Size: 549.21
-Imported?: true
-
-Car 5: 
+Car 3: 
 Make: Hyundai
 Size: fullSized
-Weight: 3433.58
-Engine Size: 771.05
+Weight: 3291.83
+Engine Size: 901.27
+Imported?: true
+
+Car 4: 
+Make: Chevy
+Size: intermediate
+Weight: 2215.49
+Engine Size: 749.3
+Imported?: false
+
+Car 5: 
+Make: Nissan
+Size: fullSized
+Weight: 3453.73
+Engine Size: 586.75
 Imported?: true
 
 Car 6: 
-Make: Chevy
+Make: Ford
 Size: fullSized
-Weight: 3785.14
-Engine Size: 724.68
+Weight: 2557.13
+Engine Size: 512.8
 Imported?: false
 
 Car 7: 
 Make: Toyota
 Size: compact
-Weight: 1997.25
-Engine Size: 521.08
+Weight: 1796.51
+Engine Size: 109.4
 Imported?: true
 
 Car 8: 
-Make: Chevy
+Make: Hyundai
 Size: intermediate
-Weight: 2215.73
-Engine Size: 975.7
-Imported?: false
+Weight: 2246.75
+Engine Size: 505.81
+Imported?: true
 
 Car 9: 
-Make: Ford
-Size: fullSized
-Weight: 3853.2
-Engine Size: 226.16
-Imported?: false
+Make: Hyundai
+Size: intermediate
+Weight: 2286.13
+Engine Size: 349.14
+Imported?: true
 
 Car 10: 
 Make: Hyundai
-Size: fullSized
-Weight: 3573.6
-Engine Size: 928.85
+Size: compact
+Weight: 1946.63
+Engine Size: 924.84
 Imported?: true
 
