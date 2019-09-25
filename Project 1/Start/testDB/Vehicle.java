@@ -1,11 +1,11 @@
 
 public class Vehicle {
-	public static String VehicleMake;// = { "Ford", "Chevy", "Toyota", "Nissan", "Hyundai" };
-	public static String VehicleSize;// = { "compact", "intermediate", "fullSized" };
+	public static String VehicleMake;
+	public static String VehicleSize;
 	public static double VehicleWeight;
 	public static double VehicleEngineSize;
 	public static boolean isVehicleImport;
-
+	
 	public String getVehicleMake() 
 	{
 		return VehicleMake;

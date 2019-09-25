@@ -22,14 +22,14 @@ public class TestDB
 	   Connection conn = SimpleDataSource.getConnection();
 	   Statement stat = conn.createStatement();
 	   try {  
-			  stat.execute("DROP TABLE Test2"); 
+			  stat.execute("DROP TABLE VehicleTable"); 
 	      }
 		   catch (Exception e)
 			{ System.out.println(""); }      
 
 	   try
 	      {
-		   stat.execute("CREATE TABLE Test2 (CarID int, Make CHAR(20), Size CHAR(20), Weight FLOAT, EngineSize FLOAT, Import CHAR(5))");
+		   stat.execute("CREATE TABLE VehicleTable (CarID int, Make CHAR(20), Size CHAR(20), Weight FLOAT, EngineSize FLOAT, Import CHAR(5))");
 		   
 		   for(int i = 1; i<11; i++) {
 			   Vehicle Vehicle = new Vehicle();
@@ -74,12 +74,12 @@ public class TestDB
 				System.out.println("Imported?: " + Vehicle.isVehicleImport + "\n");
 				fileWriter.write("Imported?: " + imported + "\n\n");
 				
-				stat.execute("INSERT INTO Test2 VALUES ("+i+",'"+make+"','"+size+"',"+df.format(weight)+","+df.format(enginesize)+","+imported+")");
+				stat.execute("INSERT INTO VehicleTable VALUES ("+i+",'"+make+"','"+size+"',"+df.format(weight)+","+df.format(enginesize)+","+imported+")");
 			   }
 	   
-		   	 ResultSet result = stat.executeQuery("SELECT * FROM Test2");
+		   	 ResultSet result = stat.executeQuery("SELECT * FROM VehicleTable");
 				  
-				System.out.println("Querying: SELECT * FROM Test2");
+				System.out.println("Querying: SELECT * FROM VehicleTable");
 				ResultSetMetaData rsm = result.getMetaData();
 				int cols = rsm.getColumnCount();
 				  while(result.next())
@@ -88,16 +88,16 @@ public class TestDB
 	               System.out.print(result.getString(i)+" ");
 	             System.out.println("");      
 				  }
-				  System.out.println("\n"+"Querying: SELECT * FROM Test2 WHERE Make = 'Ford' OR Make = 'Chevy'");
-				  result = stat.executeQuery("SELECT * FROM Test2 WHERE Make ='Ford' OR Make = 'Chevy'");
+				  System.out.println("\n"+"Querying: SELECT * FROM VehicleTable WHERE Make = 'Ford' OR Make = 'Chevy'");
+				  result = stat.executeQuery("SELECT * FROM VehicleTable WHERE Make ='Ford' OR Make = 'Chevy'");
 				  while(result.next())
 				  {
 				    for(int i = 1; i <= cols; i++)
 	               System.out.print(result.getString(i)+" ");
 	             System.out.println("");      
 				  }
-				  System.out.println("\n"+"Querying: SELECT * FROM Test2 WHERE Weight > 2500");
-				  result = stat.executeQuery("SELECT * FROM Test2 WHERE Weight > 2500");
+				  System.out.println("\n"+"Querying: SELECT * FROM VehicleTable WHERE Weight > 2500");
+				  result = stat.executeQuery("SELECT * FROM VehicleTable WHERE Weight > 2500");
 				  while(result.next())
 				  {
 				    for(int i = 1; i <= cols; i++)
@@ -105,13 +105,13 @@ public class TestDB
 	             System.out.println("");      
 				  }
 				try { 
-			     stat.execute("DROP TABLE Test2"); 
+			     stat.execute("DROP TABLE VehicleTable"); 
 	         }
 				catch (Exception e)
 				{ System.out.println("drop failed"); }    
 	      } finally {
 		         conn.close();
-					System.out.println("dropped Table Test2, closed connection and ending program");  
+					System.out.println("dropped Table VehicleTable, closed connection and ending program");  
 		    }
 		fileWriter.close();
 	    Vehicle.setIsVehicleImport(Vehicle.isVehicleImport);
