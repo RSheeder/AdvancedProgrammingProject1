@@ -50,6 +50,7 @@ public class TestDB
 				   imported = true;
 			   }
 			   
+			   
 			   Vehicle.setVehicleMake(make);
 			   Vehicle.setVehicleSize(size);
 			   Vehicle.setVehicleWeight(weight);

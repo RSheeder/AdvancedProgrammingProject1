@@ -43,7 +43,7 @@ public class SimpleDataSource
    public static Connection getConnection() throws SQLException
    {
 
-	   System.out.println("Connecting to Database: URL: " + url + "Username: " + username);
+	   System.out.println("Connecting to Database: URL: " + url + "  Username: " + username);
 	   return DriverManager.getConnection(url, username, password);
 
    }
